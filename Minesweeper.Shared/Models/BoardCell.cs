@@ -8,16 +8,6 @@ namespace Minesweeper.Shared.Models
     public class BoardCell
     {
         /// <summary>
-        /// X coordinate of the cell on the board
-        /// </summary>
-        public int X { get; set; }
-
-        /// <summary>
-        /// Y coordinate of the cell on the board
-        /// </summary>
-        public int Y { get; set; }
-
-        /// <summary>
         /// Indicates if the cell has a mine
         /// </summary>
         public bool HasMine { get; set; }
