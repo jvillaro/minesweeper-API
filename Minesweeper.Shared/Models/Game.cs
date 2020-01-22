@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace Minesweeper.Shared.Models
 {
@@ -46,6 +45,11 @@ namespace Minesweeper.Shared.Models
         public BoardCell[,] Board { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public string State { get; set; }
+
+        /// <summary>
         /// When the game was created
         /// </summary>
         public DateTime Created { get; set; }
@@ -73,7 +77,7 @@ namespace Minesweeper.Shared.Models
         /// <summary>
         /// Constructor
         /// </summary>
-        private Game()
+        public Game()
         {
         }
 
@@ -81,12 +85,11 @@ namespace Minesweeper.Shared.Models
         /// <summary>
         /// Constructor
         /// </summary>
-        public Game(int height, int width, int numberOfMines)
+        public Game(int rows, int columns)
         {
-            Height = height;
-            Width = width;
-            NumberOfMines = numberOfMines;
-            Board = new BoardCell[height, width];
+            Rows = rows;
+            Columns = columns;
+            Board = new BoardCell[rows, columns];
         }
 
         #endregion --- Constructors ---
