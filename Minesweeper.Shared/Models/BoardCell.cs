@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper.Shared.Enums;
+using System;
 
 namespace Minesweeper.Shared.Models
 {
@@ -8,6 +9,16 @@ namespace Minesweeper.Shared.Models
     public class BoardCell
     {
         /// <summary>
+        /// Row of the cell on the board
+        /// </summary>
+        public int Row { get; set; }
+
+        /// <summary>
+        /// Column of the cell on the board
+        /// </summary>
+        public int Column { get; set; }
+
+        /// <summary>
         /// Indicates if the cell has a mine
         /// </summary>
         public bool HasMine { get; set; }
@@ -15,11 +26,11 @@ namespace Minesweeper.Shared.Models
         /// <summary>
         /// Amount of bombs in the adjacent cells
         /// </summary>
-        public int NearByMines { get; set; }
+        public int AdjacentMines { get; set; }
 
         /// <summary>
-        /// Indicates if the cell has been flagged by the player
+        /// Cell state
         /// </summary>
-        public bool Flagged { get; set; }
+        public CellState State { get; set; }
     }
 }

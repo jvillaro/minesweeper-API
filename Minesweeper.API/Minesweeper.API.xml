@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Minesweeper.API</name>
+    </assembly>
+    <members>
+        <member name="M:Minesweeper.API.Controllers.BaseController.#ctor(Microsoft.Extensions.Logging.ILogger{Minesweeper.API.Controllers.GamesController},Minesweeper.API.Models.MinesweeperContext)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Minesweeper.API.Controllers.BaseController.InternalServerError(System.String)">
+            <summary>
+            Returns the Internal server error status code
+            </summary>
+        </member>
+        <member name="M:Minesweeper.API.Controllers.BaseController.ExecuteAsync(System.Func{System.Threading.Tasks.Task{System.Object}})">
+            <summary>
+            Executes a method
+            </summary>      
+        </member>
+        <member name="M:Minesweeper.API.Controllers.BaseController.ExecuteAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Executes a method without return type
+            </summary>      
+        </member>
+        <member name="T:Minesweeper.API.Controllers.GamesController">
+            <summary>
+            Controller for game related actions
+            </summary>
+        </member>
+        <member name="M:Minesweeper.API.Controllers.GamesController.#ctor(Microsoft.Extensions.Logging.ILogger{Minesweeper.API.Controllers.GamesController},Minesweeper.API.Models.MinesweeperContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="dbContext"></param>
+        </member>
+        <member name="M:Minesweeper.API.Controllers.GamesController.NewGameAsync(Minesweeper.Shared.Models.NewGameParameters)">
+            <summary>
+            Create a new game
+            </summary>
+            <param name="parameters">Initial parameters</param>
+            <returns></returns>
+        </member>
+        <member name="T:Minesweeper.API.Models.MinesweeperContext">
+            <summary>
+            Minesweeper dbcontext
+            </summary>
+        </member>
+        <member name="M:Minesweeper.API.Models.MinesweeperContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="options"></param>
+        </member>
+    </members>
+</doc>

@@ -1,24 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Minesweeper.API.Models;
 using Minesweeper.Shared.Models;
+using System.Threading.Tasks;
 
 namespace Minesweeper.API.Controllers
 {
+    /// <summary>
+    /// Controller for game related actions
+    /// </summary>
     [ApiController]
-    [Route("[controller]")]
-    public class GamesController : ControllerBase
+    [Route("api/v1/[controller]")]
+    public class GamesController : BaseController
     {
+        #region --- Constructor ---
 
-        private readonly ILogger<GamesController> _logger;
-
-
-        public GamesController(ILogger<GamesController> logger)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="dbContext"></param>
+        public GamesController(ILogger<GamesController> logger, MinesweeperContext dbContext) 
+            : base(logger, dbContext)
         {
-            _logger = logger;
+
         }
+
+        #endregion --- Constructor ---
+
+
+        #region --- NewGameAsync ---
+
+        /// <summary>
+        /// Create a new game
+        /// </summary>
+        /// <param name="parameters">Initial parameters</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> NewGameAsync([FromBody] NewGameParameters parameters)
+        {
+            return await ExecuteAsync(async () =>
+            {
+                var game = new Game(parameters.Rows, parameters.Columns, parameters.NumberOfMines);
+
+                return game;
+            });
+        }
+
+        #endregion --- NewGameAsync ---
     }
 }
