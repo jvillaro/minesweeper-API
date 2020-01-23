@@ -8,6 +8,9 @@ namespace Minesweeper.API.Models
     /// </summary>
     public class MinesweeperContext : DbContext
     {
+        /// <summary>
+        /// Game collection
+        /// </summary>
         public DbSet<Game> Games { get; set; }
 
 

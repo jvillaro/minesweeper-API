@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Minesweeper.API.Controllers
 {
+    /// <summary>
+    /// Base for controllers
+    /// </summary>
     public class BaseController : ControllerBase
     {
-        private MinesweeperContext db;
+        protected readonly MinesweeperContext db;
         private readonly ILogger<GamesController> logger;
 
         #region --- Constructor ---

@@ -72,6 +72,11 @@ namespace Minesweeper.Shared.Models
         /// </summary>
         public TimeSpan Duration { get; set; }
 
+        /// <summary>
+        /// Indicates if the player actually saved the game
+        /// </summary>
+        public bool Saved { get; set; }
+
         #endregion --- Properties ---
 
 
@@ -92,6 +97,7 @@ namespace Minesweeper.Shared.Models
             Columns = columns;
             NumberOfMines = numberOfMines;
             State = GameState.Created;
+            Saved = false;
             Board = InitializeBoard(rows, columns, numberOfMines);
             CalculateAdjacentMines();
         }
@@ -206,5 +212,47 @@ namespace Minesweeper.Shared.Models
         }
 
         #endregion --- HasMine ---
+
+
+        #region --- PlayCell ---
+
+        /// <summary>
+        /// Make a play
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="playType"></param>
+        public void PlayCell(int row, int column, PlayType playType)
+        {
+            // Check if it's the actual first move/play and set the start date/time
+            if (Created == Started)
+            {
+                Started = DateTime.Now;
+            }
+
+            // Flag the cell
+            if (playType == PlayType.FlagCell)
+            {
+                Board[row, column].State = CellState.Flagged;
+                return;
+            }
+
+            // If the cell has a mine, end game
+            if (Board[row, column].HasMine)
+            {
+                Ended = DateTime.Now;
+                State = GameState.Falied;
+                return;
+            }
+
+            // Clear the cell 
+            Board[row, column].State = CellState.Cleared;
+
+            // Should check if the criteria for solving the game is met...
+
+            // Should check for all adjacent cells that can be cleared as well...
+        }
+
+        #endregion --- PlayCell ---
     }
 }

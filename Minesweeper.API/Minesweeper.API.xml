@@ -4,6 +4,11 @@
         <name>Minesweeper.API</name>
     </assembly>
     <members>
+        <member name="T:Minesweeper.API.Controllers.BaseController">
+            <summary>
+            Base for controllers
+            </summary>
+        </member>
         <member name="M:Minesweeper.API.Controllers.BaseController.#ctor(Microsoft.Extensions.Logging.ILogger{Minesweeper.API.Controllers.GamesController},Minesweeper.API.Models.MinesweeperContext)">
             <summary>
             Constructor
@@ -43,9 +48,48 @@
             <param name="parameters">Initial parameters</param>
             <returns></returns>
         </member>
+        <member name="M:Minesweeper.API.Controllers.GamesController.SaveGameAsync(Minesweeper.Shared.Models.SaveGameParameters)">
+            <summary>
+            Save the game
+            </summary>
+            <param name="parameters">Save game parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:Minesweeper.API.Controllers.GamesController.GetGamesAsync">
+            <summary>
+            Gets all the games
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Minesweeper.API.Controllers.GamesController.GetGamesByPlayerEmailAsync(System.String)">
+            <summary>
+            Gets all the users games by his or her email
+            </summary>
+            <param name="playerEmail">Players email</param>
+            <returns></returns>
+        </member>
+        <member name="M:Minesweeper.API.Controllers.GamesController.LoadGameAsync(System.Guid)">
+            <summary>
+            Loads the specified game
+            </summary>
+            <param name="gameId">Game ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Minesweeper.API.Controllers.GamesController.PlayCellAsync(Minesweeper.Shared.Models.PlayCellParameters)">
+            <summary>
+            Make a play on a cell
+            </summary>
+            <param name="parameters">Parameters for making a play</param>
+            <returns></returns>
+        </member>
         <member name="T:Minesweeper.API.Models.MinesweeperContext">
             <summary>
             Minesweeper dbcontext
+            </summary>
+        </member>
+        <member name="P:Minesweeper.API.Models.MinesweeperContext.Games">
+            <summary>
+            Game collection
             </summary>
         </member>
         <member name="M:Minesweeper.API.Models.MinesweeperContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
